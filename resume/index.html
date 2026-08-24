@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shamili Anbuselvan - Resume</title>
+  <style>
+    :root {
+      --primary: #000000; /* Pure black */
+      --text: #111111;    /* Very dark gray/black */
+      --text-muted: #444444; /* Dark gray for metadata */
+      --border: #222222;  /* Clean dark divider borders */
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      color: var(--text);
+      line-height: 1.4;
+      background: #f3f4f6;
+      padding: 2rem 0;
+    }
+
+    .resume-container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .page {
+      background: #ffffff;
+      padding: 1.8rem 2.5rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      position: relative;
+      height: 1040px; /* A4 Ratio approximate under default print layout scale */
+      display: flex;
+      flex-direction: column;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 0.8rem;
+    }
+
+    .name {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--primary);
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      margin-bottom: 0.2rem;
+    }
+
+    .title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .contact-info {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.4rem 0.8rem;
+    }
+
+    .contact-info a {
+      color: var(--text-muted);
+      text-decoration: none;
+    }
+
+    .contact-info a:hover {
+      text-decoration: underline;
+    }
+
+    .section-title {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      border-bottom: 1px solid var(--primary);
+      padding-bottom: 0.15rem;
+      margin: 0.9rem 0 0.5rem;
+    }
+
+    .summary-text {
+      font-size: 0.85rem;
+      text-align: justify;
+      color: var(--text);
+    }
+
+    /* TECHNICAL SKILLS TABLE */
+    .skills-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.82rem;
+      margin-top: 0.2rem;
+    }
+
+    .skills-table td {
+      padding: 0.22rem 0;
+      vertical-align: top;
+    }
+
+    .skills-table td.category {
+      font-weight: 700;
+      color: var(--primary);
+      width: 25%;
+    }
+
+    .skills-table td.items {
+      color: var(--text);
+      width: 75%;
+    }
+
+    /* EXPERIENCE SECTION */
+    .exp-item {
+      margin-bottom: 0.8rem;
+    }
+
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 0.15rem;
+    }
+
+    .exp-role-company {
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+
+    .exp-company {
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .exp-date {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    .project-name {
+      font-size: 0.88rem;
+      font-weight: 700;
+      font-style: italic;
+      color: var(--primary);
+      margin: 0.4rem 0 0.2rem;
+    }
+
+    .bullets {
+      list-style-type: disc;
+      margin-left: 1.1rem;
+      font-size: 0.82rem;
+      color: var(--text);
+    }
+
+    .bullets li {
+      margin-bottom: 0.18rem;
+      text-align: justify;
+    }
+
+    /* TWO COLUMN LAYOUT AT BOTTOM */
+    .columns-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      font-size: 0.85rem;
+    }
+
+    .col-title {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--primary);
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.2rem;
+      margin: 1rem 0 0.5rem;
+    }
+
+    .edu-item {
+      margin-bottom: 0.75rem;
+    }
+
+    .edu-header {
+      display: flex;
+      justify-content: space-between;
+      font-weight: 700;
+      font-size: 0.85rem;
+    }
+
+    .edu-school {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      margin-top: 0.1rem;
+    }
+
+    .edu-score {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 0.05rem;
+    }
+
+    .cert-item-text {
+      margin-bottom: 0.35rem;
+    }
+
+    .cert-item-text span {
+      font-weight: 600;
+    }
+
+    .lang-item-text {
+      margin-bottom: 0.35rem;
+    }
+
+    .lang-item-text span {
+      font-weight: 600;
+    }
+
+    /* PRINT LAYOUT ADJUSTMENTS */
+    @media print {
+      body {
+        background: #ffffff;
+        padding: 0;
+      }
+      .page {
+        margin: 0;
+        box-shadow: none;
+        height: 100vh;
+        page-break-after: always;
+        padding: 2rem 2.5rem;
+      }
+      .page:last-child {
+        page-break-after: avoid;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="resume-container">
+    
+    <!-- PAGE 1 -->
+    <div class="page">
+      <div class="header">
+        <h1 class="name">Shamili A</h1>
+        <div class="title">Full Stack Developer</div>
+        <div class="contact-info">
+          <span>9047995777</span>
+          <span>|</span>
+          <a href="mailto:shamilianbu2000@gmail.com">shamilianbu2000@gmail.com</a>
+          <span>|</span>
+          <span>Chennai, Tamil Nadu, India</span>
+          <span>|</span>
+          <a href="https://www.linkedin.com/in/shamili-a-960124215" target="_blank">LinkedIn</a>
+          <span>|</span>
+          <a href="https://github.com/shamilianbu2000" target="_blank">GitHub</a>
+        </div>
+      </div>
+
+      <div class="section-title">Professional Summary</div>
+      <p class="summary-text">
+        Full Stack Developer with over 4 years of experience specializing in building scalable enterprise SaaS systems, automated transaction workflows, and microservice backends. I am a strong SQL developer with a critical thinking mindset, proficient in TypeScript, JavaScript, Python, NestJS, and Angular, with expertise in hybrid mobile app frameworks (Ionic, Capacitor) and database optimization. Proven track record in orchestrating secure APIs, implementing multi-level approval hierarchies, and leading end-to-end features from architecture design to production release.
+      </p>
+
+      <div class="section-title">Technical Skills</div>
+      <table class="skills-table">
+        <tr>
+          <td class="category">Languages</td>
+          <td class="items">TypeScript, Python, C/C++, Java, JavaScript, SQL, HTML5, CSS3/SCSS</td>
+        </tr>
+        <tr>
+          <td class="category">Frontend</td>
+          <td class="items">Angular , Vue.js, Next.js 15, Nuxt.js, PrimeNG, Ant Design Vue, Tailwind CSS</td>
+        </tr>
+        <tr>
+          <td class="category">Backend</td>
+          <td class="items">NestJS, FastAPI, Node.js, Express.js, Flask</td>
+        </tr>
+        <tr>
+          <td class="category">Databases & ORMs</td>
+          <td class="items">PostgreSQL, MySQL, Redis, TypeORM, Oracle Database</td>
+        </tr>
+        <tr>
+          <td class="category">Mobile</td>
+          <td class="items">Ionic 5, Capacitor, Cordova</td>
+        </tr>
+        <tr>
+          <td class="category">DevOps & Cloud</td>
+          <td class="items">AWS (EC2, S3, SNS, SQS), Azure (MSAL), Nginx, Git</td>
+        </tr>
+        <tr>
+          <td class="category">AI / ML Integration</td>
+          <td class="items">OpenAI GPT, Google Gemini, Prompt Engineering, DSPy, Tesseract OCR, Vector Search</td>
+        </tr>
+        <tr>
+          <td class="category">Realtime & Queues</td>
+          <td class="items">WebSockets, Socket.io, Bull/BullMQ</td>
+        </tr>
+        <tr>
+          <td class="category">SSO & Integrations</td>
+          <td class="items">Keycloak SSO, Firebase FCM, Twilio</td>
+        </tr>
+      </table>
+
+      <div class="section-title">Professional Experience</div>
+      <div class="exp-item">
+        <div class="exp-header">
+          <span class="exp-role-company">Full Stack Developer <span class="exp-company">| Finstein, Chennai, India</span></span>
+          <span class="exp-date">Jul 2022 – Present</span>
+        </div>
+        
+        <div class="project-name">B2B Supply Chain & ERP Platform</div>
+        <ul class="bullets">
+          <li>Architected a dynamic, multi-level document approval workflow engine incorporating auto-escalation parameters, notifications, and remainder schedules.</li>
+          <li>Designed granular inventory catalog views supporting customizable configurations, column toggling, and role-based permissions grids.</li>
+          <li>Developed full-cycle sales, purchase, and accounting workflows managing vendor orders, invoicing, payments, and receipts.</li>
+          <li>Built an Angular 16 frontend admin panel utilizing PrimeNG widgets and styled grids, featuring bulk Excel importing and secure OTP logins.</li>
+        </ul>
+
+        <div class="project-name">Corporate Food Tracking & Issuance System</div>
+        <ul class="bullets">
+          <li>Engineered automated meal scheduling and token assignment routines for Breakfast, Lunch, and Dinner.</li>
+          <li>Developed secure user QR scanning verification mechanisms utilizing UUID-based identifiers and Base64 meal payloads.</li>
+          <li>Programmed background cron services for daily PDF QR code generation, automated email distribution, and discrepancy auditing.</li>
+          <li>Integrated cross-platform push notifications dynamically driven by Firebase Cloud Messaging (FCM) configurations.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- PAGE 2 -->
+    <div class="page">
+      <div class="section-title" style="margin-top: 0;">Professional Experience (Continued)</div>
+      
+      <div class="exp-item">
+        <div class="project-name">Event Registration & Management System</div>
+        <ul class="bullets">
+          <li>Designed a full-stack Event Management platform for expo bookings, visitor tracking, and agenda schedules.</li>
+          <li>Developed a cross-platform hybrid mobile app built with Ionic & Capacitor supporting iOS, Android, and Web viewports.</li>
+          <li>Created administrative dashboards incorporating real-time database syncing, agenda builders, and instant push notifications.</li>
+        </ul>
+
+        <div class="project-name">Contract Lifecycle & Compliance Management (CLM)</div>
+        <ul class="bullets">
+          <li>Implemented multi-party review and document authorization workflows with sequential routing rules.</li>
+          <li>Built an interactive drafting workspace featuring rich-text editing powered by Tiptap and Ant Design Vue styles.</li>
+          <li>Orchestrated native electronic signature lifecycles for multi-signer verification and secure status auditing.</li>
+        </ul>
+      </div>
+
+      <div class="columns-grid">
+        <div>
+          <div class="col-title">Education</div>
+          <div class="edu-item">
+            <div class="edu-header">
+              <span>B.E (Computer Science Engineering)</span>
+              <span>2018 – 2022</span>
+            </div>
+            <div class="edu-school">University College of Engineering, Ariyalur</div>
+            <div class="edu-score">GPA: 7.8 / 10</div>
+          </div>
+          <div class="edu-item">
+            <div class="edu-header">
+              <span>Grade XII (Higher Secondary)</span>
+              <span>2018</span>
+            </div>
+            <div class="edu-school">Nirmala Girls Higher Secondary School</div>
+            <div class="edu-score">Score: 1029 / 1200</div>
+          </div>
+          <div class="edu-item">
+            <div class="edu-header">
+              <span>Grade X (Secondary Education)</span>
+              <span>2016</span>
+            </div>
+            <div class="edu-school">Nirmala Girls Higher Secondary School</div>
+            <div class="edu-score">Score: 471 / 500</div>
+          </div>
+        </div>
+
+        <div>
+          <div class="col-title">Certifications</div>
+          <div class="cert-item-text"><span>Java Programming</span> – Course Completion Certificate</div>
+          <div class="cert-item-text"><span>Concepts in Machine Learning</span> – Workshop Certification</div>
+          <div class="cert-item-text"><span>Digital Image Processing</span> – Workshop Certification</div>
+          <div class="cert-item-text"><span>Advanced EXCEL</span> – Workshop Certification</div>
+          <div class="cert-item-text"><span>Oracle SQL</span> – Course Certification</div>
+          <div class="cert-item-text"><span>Hindi Language (4 Levels)</span> – Dakshin Bharat Hindi Prachar Sabha</div>
+        </div>
+      </div>
+
+      <div class="columns-grid" style="margin-top: 0.5rem;">
+        <div>
+          <div class="col-title">Languages</div>
+          <div class="lang-item-text"><span>English</span> – Professional Proficiency</div>
+          <div class="lang-item-text"><span>Tamil</span> – Native Language</div>
+          <div class="lang-item-text"><span>Hindi</span> – Intermediate (Dakshin Bharat Sabha levels cleared)</div>
+        </div>
+        <div>
+          <div class="col-title">Personal Attributes & Strengths</div>
+          <p style="font-size: 0.85rem; color: var(--text); line-height: 1.5;">
+            Adaptable, quick learner, self-motivated team member with strong communication and data analysis capabilities. Passionate about collaborating with team members and sharing reusable code.
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      setTimeout(() => {
+        window.print();
+      }, 500);
+    });
+  </script>
+</body>
+</html>
+

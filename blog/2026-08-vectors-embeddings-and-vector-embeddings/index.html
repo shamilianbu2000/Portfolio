@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vectors, Embeddings, and Vector Embeddings: Understanding the Foundation of Modern AI — Shamili Anbuselvan</title>
+  <meta name="description" content="Explore vectors, embeddings, and vector embeddings in AI. Learn how they represent data meaning, measure similarity, and power vector search.">
+  <meta name="author" content="Shamili Anbuselvan">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://yogeshwaran.com/blog/2026-08-vectors-embeddings-and-vector-embeddings">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Vectors, Embeddings, and Vector Embeddings: Understanding the Foundation of Modern AI">
+  <meta property="og:description" content="Demystifying the mathematical foundations of vector search and semantic representation in modern LLM systems.">
+  <meta property="og:url" content="https://yogeshwaran.com/blog/2026-08-vectors-embeddings-and-vector-embeddings">
+  <meta property="og:site_name" content="Shamili Anbuselvan">
+  <meta property="article:author" content="Shamili Anbuselvan">
+  <meta property="article:published_time" content="2026-08-16">
+  <meta property="og:image" content="https://yogeshwaran.com/og-image.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Vectors, Embeddings, and Vector Embeddings: Understanding the Foundation of Modern AI">
+  <meta name="twitter:description" content="A developer guide to vectors, dimensions, embeddings, vector databases, and semantic similarity in AI.">
+  <meta name="twitter:image" content="https://yogeshwaran.com/og-image.png">
+
+  <meta name="theme-color" content="#080B1A">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%238B5CF6'/%3E%3Ctext y='.7em' x='50' font-size='60' font-family='sans-serif' font-weight='bold' fill='white' text-anchor='middle' dominant-baseline='middle'%3ES%3C/text%3E%3C/svg%3E">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;700;800;900&family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <!-- GLOBAL BACKGROUND STARS -->
+  <div class="stars-container" aria-hidden="true">
+    <div class="star star-1"></div>
+    <div class="star star-2"></div>
+    <div class="star star-3"></div>
+    <div class="star star-4"></div>
+    <div class="star star-5"></div>
+    <div class="star star-6"></div>
+    <div class="star star-7"></div>
+    <div class="star star-8"></div>
+    <div class="star star-9"></div>
+    <div class="star star-10"></div>
+    <div class="star star-11"></div>
+    <div class="star star-12"></div>
+  </div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <nav aria-label="Main navigation">
+    <a href="/" class="nav-logo">Shamili<em> ✦</em></a>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/#about">About</a></li>
+      <li><a href="/#work">Work</a></li>
+      <li><a href="/#skills">Skills</a></li>
+      <li><a href="/#recommendations">Recommendations</a></li>
+      <li><a href="/blog/" class="active">Writing</a></li>
+      <li><a href="/#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <article class="post">
+    <header class="post-header">
+      <a href="../" class="back-link">← All posts</a>
+      <div class="post-meta">
+        <time datetime="2026-08-16">August 16, 2026</time>
+        <span class="dot" aria-hidden="true"></span>
+        <span>6 min read</span>
+      </div>
+      <h1 class="post-title">Vectors, Embeddings, and Vector Embeddings: Understanding the Foundation of Modern AI</h1>
+      <div class="post-tags">
+        <span class="post-tag">vector-search</span>
+        <span class="post-tag">embeddings</span>
+        <span class="post-tag">ai-engineering</span>
+        <span class="post-tag">databases</span>
+        <span class="post-tag">system-design</span>
+      </div>
+    </header>
+
+    <div class="post-body">
+      <p>If you have explored artificial intelligence, semantic search, or Retrieval-Augmented Generation, you have probably encountered the terms <em>vector</em>, <em>embedding</em>, and <em>vector embedding</em>. These terms are often used interchangeably, but they do not mean exactly the same thing.</p>
+      <p>Understanding the difference makes it easier to see how AI systems search documents, recommend products, and identify similar information.</p>
+
+      <h2>What Is a Vector?</h2>
+      <p>A vector is an ordered list of numbers. For example:</p>
+      <pre><code>[180, 75, 30]</code></pre>
+      <p>These numbers could describe a person's physical measurements:</p>
+      <ul>
+        <li>Height: 180 cm</li>
+        <li>Weight: 75 kg</li>
+        <li>Age: 30 years</li>
+      </ul>
+      <p>Together, they form a three-dimensional vector: <code>Person = [180, 75, 30]</code>.</p>
+      <p>A vector might represent a customer’s purchasing behaviour, a product’s price and ratings, a location’s coordinates, or the pixel values of an image. A vector is simply a mathematical structure used to store and compare numerical information.</p>
+
+      <h2>What Is a Dimension?</h2>
+      <p>A dimension is one value within a vector. For example, in the vector <code>[180, 75, 30]</code>, there are three dimensions:</p>
+      <ul>
+        <li>Dimension 1: Height</li>
+        <li>Dimension 2: Weight</li>
+        <li>Dimension 3: Age</li>
+      </ul>
+      <p>Another vector, such as <code>[1500, 4.5, 250]</code>, might describe a product:</p>
+      <ul>
+        <li>Dimension 1: Price (₹1,500)</li>
+        <li>Dimension 2: Customer rating (4.5)</li>
+        <li>Dimension 3: Number of reviews (250)</li>
+      </ul>
+      <p>A vector with hundreds of values has hundreds of dimensions.</p>
+
+      <h2>A Vector Can Represent a Point in Space</h2>
+      <p>Vectors can also be understood as coordinates in mathematical space. Consider two values: <code>[180, 75]</code>. If the values represent height and weight, they identify a point on a two-dimensional graph.</p>
+      <p>Add a third value: <code>[180, 75, 30]</code>. The vector now represents a point in three-dimensional space.</p>
+      <p>AI systems commonly use vectors containing hundreds or thousands of dimensions. Although we cannot easily visualise these spaces, computers can compare positions within them mathematically.</p>
+
+      <h2>What Is an Embedding?</h2>
+      <p>An embedding is a numerical representation that captures useful relationships within data. Embedding models convert items such as words, sentences, documents, images, or audio into vectors.</p>
+      <p>For example, if we represent words as vectors:</p>
+      <ul>
+        <li><code>dog</code> &rarr; <code>[0.21, 0.44, 0.78, ...]</code></li>
+        <li><code>puppy</code> &rarr; <code>[0.19, 0.41, 0.80, ...]</code></li>
+        <li><code>car</code> &rarr; <code>[0.77, 0.12, 0.31, ...]</code></li>
+      </ul>
+      <p>The vectors for <code>dog</code> and <code>puppy</code> would typically be closer to each other in mathematical space than either is to <code>car</code>, because their semantic meanings are closely related.</p>
+      <p>The individual numbers in an embedding generally do not correspond to clearly labelled properties such as height or weight. Instead, their combined pattern represents relationships learned by the embedding model.</p>
+
+      <h2>Why Are Embeddings Useful?</h2>
+      <p>Computers do not understand language in the same way humans do. An embedding helps a system compare meaning numerically.</p>
+      <p>Consider these sentences:</p>
+      <ol>
+        <li><em>"How can I reset my password?"</em></li>
+        <li><em>"I forgot my account password."</em></li>
+        <li><em>"What is the weather today?"</em></li>
+      </ol>
+      <p>The first two sentences use different words but relate to the same problem. Their embeddings should be closer together than their embeddings are to the weather-related sentence. This allows AI systems to find related information even when the wording does not match exactly.</p>
+
+      <h2>What Is a Vector Embedding?</h2>
+      <p>A vector embedding is the numerical vector produced when an embedding model represents an item in mathematical space.</p>
+      <p>You can think about the terminology this way:</p>
+      <ul>
+        <li><strong>A vector</strong> is the list of numbers.</li>
+        <li><strong>An embedding</strong> is the meaningful representation learned or produced by a model.</li>
+        <li><strong>A vector embedding</strong> is that representation expressed as a numerical vector.</li>
+      </ul>
+      <p>In everyday AI discussions, "embedding" and "vector embedding" are often used to refer to the same output.</p>
+
+      <h2>Vectors vs. Embeddings</h2>
+      <p>A vector does not automatically capture meaning. For example, <code>[180, 75, 30]</code> contains explicit, manually structured measurements. An embedding vector, such as <code>[0.21, -0.44, 0.78, 0.15, ...]</code>, is different—these values are produced by a machine-learning model and collectively encode useful semantic relationships.</p>
+      <blockquote>
+        <p><strong>Every vector embedding is a vector, but not every vector is an embedding.</strong></p>
+      </blockquote>
+
+      <h2>How AI Measures Similarity</h2>
+      <p>Once information is converted into embeddings, AI systems can measure how close different vectors are. A common method is <strong>cosine similarity</strong>, which compares the direction of two vectors to estimate how similar their representations are. For example:</p>
+      <ul>
+        <li><code>"dog"</code> and <code>"puppy"</code> &rarr; high similarity</li>
+        <li><code>"dog"</code> and <code>"car"</code> &rarr; lower similarity</li>
+      </ul>
+      <p>Other common comparison methods include dot product and Euclidean distance.</p>
+
+      <h2>How Embeddings Support RAG</h2>
+      <p>Retrieval-Augmented Generation uses embeddings to locate relevant information before generating an answer. A typical workflow looks like this:</p>
+      <ol>
+        <li>Collect documents.</li>
+        <li>Break documents into smaller chunks.</li>
+        <li>Convert each chunk into an embedding.</li>
+        <li>Store the embeddings and related metadata in a vector database.</li>
+        <li>Convert the user’s question into an embedding.</li>
+        <li>Find document chunks with similar embeddings.</li>
+        <li>Provide the retrieved information to a language model.</li>
+        <li>Generate an answer based on that information.</li>
+      </ol>
+      <p>Without embeddings, the search might depend only on exact keywords and miss relevant passages using different terminology.</p>
+
+      <h2>What Is a Vector Database?</h2>
+      <p>A vector database stores embeddings and supports efficient similarity searches. For example:</p>
+      <pre><code>Document 1: "Employees receive 12 annual leave days."
+Embedding: [0.21, 0.34, 0.72, ...]
+
+Document 2: "Remote work requires manager approval."
+Embedding: [0.41, 0.18, 0.65, ...]</code></pre>
+      <p>When a user asks: <em>"How many vacation days do employees receive?"</em>, the system converts the question into an embedding and searches for nearby document vectors. Even though the user says "vacation days" while the document says "annual leave," the system can still recognise the relationship.</p>
+
+      <h2>Common Applications</h2>
+      <ul>
+        <li><strong>Semantic Search:</strong> Find information based on meaning instead of exact keyword matches.</li>
+        <li><strong>Recommendation Systems:</strong> Suggest similar products, videos, songs, or articles whose embeddings are similar to items a customer previously viewed.</li>
+        <li><strong>Customer Support:</strong> Match user questions (e.g., <em>"I cannot log in to my account"</em>) with relevant support articles (e.g., <em>"Troubleshooting account access issues"</em>).</li>
+        <li><strong>Document Classification:</strong> Group related documents (legal contracts, financial reports, healthcare records) based on content.</li>
+        <li><strong>Duplicate Detection:</strong> Identify documents or support tickets that express the same idea using different wording.</li>
+        <li><strong>AI Assistants and Chatbots:</strong> Help assistants retrieve relevant information from internal documents, product guides, previous conversations, and knowledge bases.</li>
+      </ul>
+
+      <h2>Final Thoughts</h2>
+      <p>Vectors provide the mathematical structure. Embeddings add a representation of relationships and meaning. Vector databases make those representations searchable. Together, they power smarter AI systems.</p>
+      <blockquote>
+        <p><strong>Vectors organise numbers. Embeddings represent meaning. Together, they power smarter AI systems.</strong></p>
+      </blockquote>
+    </div>
+
+    <footer class="post-footer">
+      <p class="signoff">
+        <em>Part of an ongoing series on building and scaling agentic AI systems — follow at <a href="/">shamili-anbuselvan.com</a>.</em>
+      </p>
+    </footer>
+  </article>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span>&copy; <span id="yr"></span> Shamili Anbuselvan</span>
+      <span><a href="/">← Back to portfolio</a></span>
+    </div>
+  </footer>
+
+  <script>document.getElementById('yr').textContent=new Date().getFullYear();</script>
+</body>
+</html>
+

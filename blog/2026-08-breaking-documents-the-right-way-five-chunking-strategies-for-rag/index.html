@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Breaking Documents the Right Way: Five Chunking Strategies for RAG — Shamili Anbuselvan</title>
+  <meta name="description" content="Explore document chunking strategies for Retrieval-Augmented Generation (RAG). Learn how to select from Fixed-Size, Paragraph, Page, Semantic, and Hierarchical chunking.">
+  <meta name="author" content="Shamili Anbuselvan">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://yogeshwaran.com/blog/2026-08-breaking-documents-the-right-way-five-chunking-strategies-for-rag">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Breaking Documents the Right Way: Five Chunking Strategies for RAG">
+  <meta property="og:description" content="Optimize your RAG pipelines by choosing the right document chunking strategy for your AI knowledge base.">
+  <meta property="og:url" content="https://yogeshwaran.com/blog/2026-08-breaking-documents-the-right-way-five-chunking-strategies-for-rag">
+  <meta property="og:site_name" content="Shamili Anbuselvan">
+  <meta property="article:author" content="Shamili Anbuselvan">
+  <meta property="article:published_time" content="2026-08-17">
+  <meta property="og:image" content="https://yogeshwaran.com/og-image.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Breaking Documents the Right Way: Five Chunking Strategies for RAG">
+  <meta name="twitter:description" content="A guide to document structure, chunking strategies, and tuning retrieval performance for AI agents.">
+  <meta name="twitter:image" content="https://yogeshwaran.com/og-image.png">
+
+  <meta name="theme-color" content="#080B1A">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%238B5CF6'/%3E%3Ctext y='.7em' x='50' font-size='60' font-family='sans-serif' font-weight='bold' fill='white' text-anchor='middle' dominant-baseline='middle'%3ES%3C/text%3E%3C/svg%3E">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;700;800;900&family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <!-- GLOBAL BACKGROUND STARS -->
+  <div class="stars-container" aria-hidden="true">
+    <div class="star star-1"></div>
+    <div class="star star-2"></div>
+    <div class="star star-3"></div>
+    <div class="star star-4"></div>
+    <div class="star star-5"></div>
+    <div class="star star-6"></div>
+    <div class="star star-7"></div>
+    <div class="star star-8"></div>
+    <div class="star star-9"></div>
+    <div class="star star-10"></div>
+    <div class="star star-11"></div>
+    <div class="star star-12"></div>
+  </div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <nav aria-label="Main navigation">
+    <a href="/" class="nav-logo">Shamili<em> ✦</em></a>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/#about">About</a></li>
+      <li><a href="/#work">Work</a></li>
+      <li><a href="/#skills">Skills</a></li>
+      <li><a href="/#recommendations">Recommendations</a></li>
+      <li><a href="/blog/" class="active">Writing</a></li>
+      <li><a href="/#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <article class="post">
+    <header class="post-header">
+      <a href="../" class="back-link">← All posts</a>
+      <div class="post-meta">
+        <time datetime="2026-08-17">August 17, 2026</time>
+        <span class="dot" aria-hidden="true"></span>
+        <span>7 min read</span>
+      </div>
+      <h1 class="post-title">Breaking Documents the Right Way: Five Chunking Strategies for RAG</h1>
+      <div class="post-tags">
+        <span class="post-tag">rag</span>
+        <span class="post-tag">ai-agents</span>
+        <span class="post-tag">vector-search</span>
+        <span class="post-tag">data-engineering</span>
+        <span class="post-tag">embeddings</span>
+      </div>
+    </header>
+
+    <div class="post-body">
+      <p>Imagine building an AI assistant that answers questions using your organisation’s internal documents. When a user asks a question, how does the system locate the correct information? This is where Retrieval-Augmented Generation, commonly known as RAG, becomes useful.</p>
+      <p>A RAG system searches a knowledge base for relevant information and provides it to a language model before the answer is generated. However, sending an entire document for every question is inefficient and may reduce the accuracy of the response. Documents must first be divided into smaller, meaningful pieces called <strong>chunks</strong>.</p>
+
+      <h2>What Is Chunking?</h2>
+      <p>Chunking is the process of breaking a large document into smaller sections that can be stored, searched, retrieved, and processed efficiently.</p>
+      <p>Think about searching for one sentence in a 500-page book. Reading the entire book every time would be slow and unnecessary. A good chunking strategy makes it easier for the system to locate only the relevant section.</p>
+
+      <h2>Why Is Chunking Important?</h2>
+      <p>Chunking directly affects the quality of a RAG system. It helps to:</p>
+      <ul>
+        <li>Break large documents into manageable pieces</li>
+        <li>Preserve important context and meaning</li>
+        <li>Improve retrieval accuracy</li>
+        <li>Reduce irrelevant information</li>
+        <li>Lower token usage (cost efficiency)</li>
+        <li>Generate faster and more focused answers</li>
+      </ul>
+      <p>Good chunking leads to better retrieval and better answers. Poor chunking may return incomplete, confusing, or unrelated information.</p>
+
+      <h2>Understanding the Document Structure</h2>
+      <p>Before selecting a chunking strategy, understand the type of content being processed:</p>
+      <ul>
+        <li><strong>Well-Structured Documents:</strong> These contain clear headings, sections, paragraphs, and consistent formatting (e.g., policies, product manuals, user guides, technical documents).</li>
+        <li><strong>Unstructured Documents:</strong> These contain long blocks of text with limited organisation (e.g., emails, meeting notes, transcripts, general text files).</li>
+        <li><strong>Complex Documents:</strong> These may include tables, code blocks, images, diagrams, and multiple layouts (e.g., financial reports, research papers, technical specifications, scanned PDFs).</li>
+      </ul>
+      <p>Because document structures differ, a single chunking strategy may not work well for every file.</p>
+
+      <h2>Five Chunking Strategies for RAG</h2>
+
+      <h3>1. Fixed-Size Chunking</h3>
+      <p>Fixed-size chunking divides text into equal-sized sections based on a predefined number of characters, words, or tokens. For example, a document may be divided into chunks of 500 tokens with a 50-token overlap.</p>
+      <p><strong>Best suited for:</strong> Unstructured text, OCR-extracted content, web scraping, and quick prototypes.</p>
+      <p><strong>Advantages:</strong> Simple to implement, fast to process, produces predictable chunk sizes.</p>
+      <p><strong>Limitations:</strong> May split a sentence or paragraph in the middle, can separate related information, and does not understand semantic meaning.</p>
+
+      <h3>2. Paragraph-Based Chunking</h3>
+      <p>Paragraph-based chunking uses natural paragraph boundaries to divide a document. This approach preserves the author’s organisation and keeps related sentences together.</p>
+      <p><strong>Best suited for:</strong> Well-formatted documents, articles/blogs, policies, reports, and essays.</p>
+      <p><strong>Advantages:</strong> Preserves natural reading flow, maintains better context than fixed-size chunks, and is easy to implement.</p>
+      <p><strong>Limitations:</strong> Paragraphs may vary significantly in length; very large paragraphs may exceed token limits, while very short paragraphs may lack sufficient context.</p>
+
+      <h3>3. Page-Based Chunking</h3>
+      <p>Page-based chunking treats each page of a document as a separate chunk. This method is helpful when page numbers and layouts are important.</p>
+      <p><strong>Best suited for:</strong> PDF documents, legal documents, books, manuals, and scanned files.</p>
+      <p><strong>Advantages:</strong> Easy to trace information back to its original page, preserves page-level references, and is useful for citations.</p>
+      <p><strong>Limitations:</strong> A topic may begin on one page and continue on another, and page headers/footers may add unnecessary noise.</p>
+
+      <h3>4. Semantic Chunking</h3>
+      <p>Semantic chunking divides content according to meaning rather than size or formatting. It identifies related sentences or concepts using embedding models and groups them into meaningful sections.</p>
+      <p><strong>Best suited for:</strong> Complex topics, technical content, knowledge bases, and documents where meaning is more important than layout.</p>
+      <p><strong>Advantages:</strong> Maintains conceptual relationships, improves retrieval relevance, and reduces the risk of separating related ideas.</p>
+      <p><strong>Limitations:</strong> Requires more processing power, can be slower/expensive, and depends heavily on embedding quality.</p>
+
+      <h3>5. Hierarchical Chunking</h3>
+      <p>Hierarchical chunking creates multiple levels of chunks (e.g., Document → Chapter → Section → Paragraph). The system may first retrieve a broad section and then search within its smaller child chunks.</p>
+      <p><strong>Best suited for:</strong> Large documents, technical manuals, legal documents, research papers, and content with a well-defined hierarchy.</p>
+      <p><strong>Advantages:</strong> Preserves both high-level and detailed context, supports broad and specific questions, and improves navigation.</p>
+      <p><strong>Limitations:</strong> More complex to implement, requires metadata and parent-child relationship tracking, and increases storage complexity.</p>
+
+      <h2>How to Choose the Right Strategy</h2>
+      <p>There is no single chunking method that works for every RAG application. Use the following approach:</p>
+      <ul>
+        <li>Start with <strong>fixed-size chunking</strong> for a quick prototype.</li>
+        <li>Use <strong>paragraph-based chunking</strong> for clean, well-structured text.</li>
+        <li>Use <strong>page-based chunking</strong> when page references and citations matter.</li>
+        <li>Use <strong>semantic chunking</strong> when meaning and context are critical.</li>
+        <li>Use <strong>hierarchical chunking</strong> for large, structured documents with multiple levels.</li>
+      </ul>
+      <p>In real-world applications, a hybrid or layered approach (e.g., dividing by headings first, then splitting into paragraph chunks with overlap) often produces the best results.</p>
+
+      <h2>Key Takeaways</h2>
+      <ul>
+        <li>Chunking is a foundational part of a successful RAG system.</li>
+        <li>Smaller chunks are precise but may lose context. Larger chunks preserve context but may return irrelevant information.</li>
+        <li>Chunk overlap helps maintain continuity between sections.</li>
+        <li>Metadata improves filtering, citations, and traceability.</li>
+        <li>The right strategy depends on the document structure and user questions.</li>
+      </ul>
+      <p>A RAG system is only as effective as the information it retrieves. The right chunking strategy does not just divide documents—it helps the AI find the right knowledge at the right time.</p>
+    </div>
+
+    <footer class="post-footer">
+      <p class="signoff">
+        <em>Part of an ongoing series on building and scaling agentic AI systems — follow at <a href="/">shamili-anbuselvan.com</a>.</em>
+      </p>
+    </footer>
+  </article>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span>&copy; <span id="yr"></span> Shamili Anbuselvan</span>
+      <span><a href="/">← Back to portfolio</a></span>
+    </div>
+  </footer>
+
+  <script>document.getElementById('yr').textContent=new Date().getFullYear();</script>
+</body>
+</html>
+

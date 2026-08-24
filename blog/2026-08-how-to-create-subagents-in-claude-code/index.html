@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How to Create Subagents in Claude Code — Shamili Anbuselvan</title>
+  <meta name="description" content="Learn how to define, configure, and coordinate subagents inside Claude Code to build a collaborative, multi-agent AI development team.">
+  <meta name="author" content="Shamili Anbuselvan">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://yogeshwaran.com/blog/2026-08-how-to-create-subagents-in-claude-code">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="How to Create Subagents in Claude Code">
+  <meta property="og:description" content="Divide and conquer: building a collaborative team of specialized subagents inside Claude Code.">
+  <meta property="og:url" content="https://yogeshwaran.com/blog/2026-08-how-to-create-subagents-in-claude-code">
+  <meta property="og:site_name" content="Shamili Anbuselvan">
+  <meta property="article:author" content="Shamili Anbuselvan">
+  <meta property="article:published_time" content="2026-08-19">
+  <meta property="og:image" content="https://yogeshwaran.com/og-image.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="How to Create Subagents in Claude Code">
+  <meta name="twitter:description" content="Step-by-step guide to building a modular AI development team with subagents in Claude Code.">
+  <meta name="twitter:image" content="https://yogeshwaran.com/og-image.png">
+
+  <meta name="theme-color" content="#080B1A">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%238B5CF6'/%3E%3Ctext y='.7em' x='50' font-size='60' font-family='sans-serif' font-weight='bold' fill='white' text-anchor='middle' dominant-baseline='middle'%3ES%3C/text%3E%3C/svg%3E">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;700;800;900&family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <!-- GLOBAL BACKGROUND STARS -->
+  <div class="stars-container" aria-hidden="true">
+    <div class="star star-1"></div>
+    <div class="star star-2"></div>
+    <div class="star star-3"></div>
+    <div class="star star-4"></div>
+    <div class="star star-5"></div>
+    <div class="star star-6"></div>
+    <div class="star star-7"></div>
+    <div class="star star-8"></div>
+    <div class="star star-9"></div>
+    <div class="star star-10"></div>
+    <div class="star star-11"></div>
+    <div class="star star-12"></div>
+  </div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <nav aria-label="Main navigation">
+    <a href="/" class="nav-logo">Shamili<em> ✦</em></a>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/#about">About</a></li>
+      <li><a href="/#work">Work</a></li>
+      <li><a href="/#skills">Skills</a></li>
+      <li><a href="/#recommendations">Recommendations</a></li>
+      <li><a href="/blog/" class="active">Writing</a></li>
+      <li><a href="/#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <article class="post">
+    <header class="post-header">
+      <a href="../" class="back-link">← All posts</a>
+      <div class="post-meta">
+        <time datetime="2026-08-19">August 19, 2026</time>
+        <span class="dot" aria-hidden="true"></span>
+        <span>5 min read</span>
+      </div>
+      <h1 class="post-title">How to Create Subagents in Claude Code</h1>
+      <div class="post-tags">
+        <span class="post-tag">claude-code</span>
+        <span class="post-tag">ai-agents</span>
+        <span class="post-tag">developer-tools</span>
+        <span class="post-tag">workflows</span>
+      </div>
+    </header>
+
+    <div class="post-body">
+      <p>Complex software projects often involve planning, frontend development, backend development, testing, and documentation. Asking one AI agent to handle everything in a single prompt can lead to missed requirements, inconsistent output, and slower delivery.</p>
+      <p>Claude Code subagents solve this problem by dividing a large task among specialised AI agents. Each subagent has its own role, instructions, tools, and area of expertise.</p>
+
+      <h2>What Are Subagents?</h2>
+      <p>A subagent is a specialised AI assistant created to perform a specific type of work.</p>
+      <p>For example, instead of asking one agent to build an entire web application, you can create separate agents for:</p>
+      <ul>
+        <li>Requirement analysis</li>
+        <li>Frontend development</li>
+        <li>Backend development</li>
+        <li>Testing</li>
+        <li>Documentation</li>
+      </ul>
+      <p>The main agent coordinates these subagents and combines their work into a complete solution.</p>
+
+      <h2>Why Use Subagents?</h2>
+      <ul>
+        <li><strong>Better Task Separation:</strong> Each agent focuses on one clearly defined responsibility. This reduces confusion and makes complex projects easier to manage.</li>
+        <li><strong>More Consistent Results:</strong> Subagents follow dedicated instructions for their roles, helping them produce more focused and reliable outputs.</li>
+        <li><strong>Reusable Workflows:</strong> Once created, subagents can be reused across multiple projects. A frontend agent, for example, can support different applications while following the same coding standards.</li>
+        <li><strong>Faster Execution:</strong> Independent tasks can be assigned to different agents, allowing parts of the project to progress in parallel.</li>
+        <li><strong>Easier Collaboration:</strong> Agents can review, verify, and improve one another’s work. This creates a structured development workflow similar to a real software team.</li>
+      </ul>
+
+      <h2>Example: An AI Team for a Web Application</h2>
+      <p>A web application project can use the following subagents:</p>
+      <ol>
+        <li><strong>Planner Agent:</strong> The Planner Agent understands the requirements, identifies dependencies, breaks the project into smaller tasks, and assigns work to the appropriate agents.</li>
+        <li><strong>Frontend Agent:</strong> The Frontend Agent builds the user interface using technologies such as HTML, CSS, JavaScript, React, Angular, or Tailwind CSS.</li>
+        <li><strong>Backend Agent:</strong> The Backend Agent develops APIs, implements business logic, integrates databases, and manages authentication and security.</li>
+        <li><strong>Test Agent:</strong> The Test Agent reviews the application, writes test cases, identifies bugs, and validates whether the implementation meets the requirements.</li>
+        <li><strong>Documentation Agent:</strong> The Documentation Agent creates technical documents, API references, setup instructions, and user guides.</li>
+      </ol>
+      <p>Together, these agents operate like a small AI-powered development team.</p>
+
+      <h2>How to Create a Subagent in Claude Code</h2>
+      
+      <h3>Step 1: Open Your Project</h3>
+      <p>Launch Claude Code inside the project directory where you want to use the subagent.</p>
+
+      <h3>Step 2: Run the Agent Management Command</h3>
+      <p>Use the following command:</p>
+      <pre><code>/agents</code></pre>
+      <p>This opens the agent management interface.</p>
+
+      <h3>Step 3: Create a New Agent</h3>
+      <p>Select the option to create a new agent and enter a meaningful name, such as <code>frontend-agent</code>. Choose a name that clearly represents the agent’s responsibility.</p>
+
+      <h3>Step 4: Define Its Role and Instructions</h3>
+      <p>Provide clear instructions explaining what the agent should do.</p>
+      <p>Example instructions:</p>
+      <pre><code>You are a Frontend Developer.
+Responsibilities:
+- Build responsive user interfaces.
+- Use React and Tailwind CSS.
+- Create reusable components.
+- Follow accessibility best practices.
+- Validate the UI on mobile and desktop.
+Do not modify backend files.</code></pre>
+      <p>Clear boundaries help prevent the agent from making unrelated changes.</p>
+
+      <h3>Step 5: Save the Agent</h3>
+      <p>Save the configuration after reviewing its name, responsibilities, tools, and instructions.</p>
+
+      <h3>Step 6: Invoke the Agent</h3>
+      <p>You can ask Claude Code to use the agent with a natural-language instruction:</p>
+      <pre><code>Use the frontend-agent to build a responsive login page.</code></pre>
+      <p>The main agent can delegate the task to the selected subagent and use its output in the overall project.</p>
+
+      <h2>How Subagents Work Together</h2>
+      <p>A coordinated workflow may look like this:</p>
+      <ol>
+        <li>The Planner Agent analyses the requirements.</li>
+        <li>The Frontend and Backend Agents implement their respective components.</li>
+        <li>The Test Agent validates the completed work.</li>
+        <li>The Documentation Agent records the setup and usage instructions.</li>
+        <li>The main agent reviews the combined result and decides the next action.</li>
+      </ol>
+      <p>All agents can share the necessary project context while maintaining separate responsibilities.</p>
+
+      <h2>Practical Use Case: To-Do Application</h2>
+      <p>Instead of sending one large prompt to build a to-do application, you can divide the work:</p>
+      <ul>
+        <li>The Planner Agent defines features and tasks.</li>
+        <li>The Frontend Agent creates the user interface.</li>
+        <li>The Backend Agent develops the APIs and database integration.</li>
+        <li>The Test Agent verifies task creation, updates, completion, and deletion.</li>
+        <li>The Documentation Agent prepares the installation and usage guide.</li>
+      </ul>
+      <p>This approach improves clarity, reduces mistakes, and makes the development process easier to maintain.</p>
+
+      <h2>Best Practices</h2>
+      <ul>
+        <li>Give every agent one clear responsibility.</li>
+        <li>Write specific instructions and boundaries.</li>
+        <li>Provide only the tools each agent requires.</li>
+        <li>Share relevant project standards and context.</li>
+        <li>Ask one agent to verify another agent’s work.</li>
+        <li>Reuse successful agent configurations.</li>
+        <li>Keep a main agent responsible for overall coordination.</li>
+      </ul>
+
+      <h2>Final Thoughts</h2>
+      <p>Subagents transform Claude Code from a single coding assistant into a coordinated AI development team.</p>
+      <p>The main value is not simply having more agents. It is assigning the right task to the right specialist, maintaining clear responsibilities, and verifying the final result. You define the team. Claude Code does the work.</p>
+    </div>
+
+    <footer class="post-footer">
+      <p class="signoff">
+        <em>Part of an ongoing series on building and scaling agentic AI systems — follow at <a href="/">shamili-anbuselvan.com</a>.</em>
+      </p>
+    </footer>
+  </article>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span>&copy; <span id="yr"></span> Shamili Anbuselvan</span>
+      <span><a href="/">← Back to portfolio</a></span>
+    </div>
+  </footer>
+
+  <script>document.getElementById('yr').textContent=new Date().getFullYear();</script>
+</body>
+</html>
+
