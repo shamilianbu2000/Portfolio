@@ -173,7 +173,7 @@
 
     .bullets li {
       margin-bottom: 0.18rem;
-      text-align: justify;
+      text-align: left;
     }
 
     .project-tech {
@@ -240,9 +240,9 @@
       font-weight: 600;
     }
 
-    /* PRINT LAYOUT ADJUSTMENTS */
     @media print {
       @page {
+        size: A4;
         margin: 0;
       }
       body {
@@ -273,7 +273,7 @@
         <div class="title">Full Stack Developer</div>
         <div class="contact-info">
           <div class="contact-row">
-            <span>9047995777</span>
+            <span>+91 90479 95777</span>
             <span>|</span>
             <a href="mailto:shamilianbu2000@gmail.com">shamilianbu2000@gmail.com</a>
             <span>|</span>
@@ -339,11 +339,10 @@
         
         <div class="project-name">Project: B2B Supply Chain & ERP Platform</div>
         <ul class="bullets">
-          <li>Architected a dynamic, multi-level document approval workflow engine incorporating auto-escalation and reminder schedules, reducing manual processing time by 45%.</li>
-          <li>Designed granular inventory catalog views supporting customizable configurations, column toggling, and role-based permissions grids.</li>
-          <li>Developed full-cycle sales, purchase, and accounting workflows managing vendor orders, invoicing, payments, and receipts.</li>
-          <li>Built an Angular 16 frontend admin panel utilizing PrimeNG widgets and styled grids, featuring bulk Excel importing and secure OTP logins.</li>
-          <li>Mentored 3 junior developers and established code review guidelines, improving code quality and reducing integration bugs by 20%.</li>
+          <li>Architected a dynamic, multi-level document approval workflow engine with auto-escalation and reminder schedules.</li>
+          <li>Designed granular inventory catalog views supporting customizable configurations, column toggling, and role-based permissions.</li>
+          <li>Developed full-cycle sales, purchase, and accounting workflows managing vendor orders, invoicing, and payments.</li>
+          <li>Mentored 3 junior developers and established team code review guidelines to ensure code quality.</li>
         </ul>
         <div class="project-tech"><strong>Tech Stack:</strong> Angular 16, NestJS, TypeORM, MySQL, Redis, AWS S3</div>
       </div>
@@ -356,11 +355,9 @@
       <div class="exp-item">
         <div class="project-name">Project: Corporate Food Tracking & Issuance System</div>
         <ul class="bullets">
-          <li>Improved report generation performance by 60% by optimizing MySQL queries, database indexes, and background processing.</li>
           <li>Engineered automated meal scheduling and token assignment routines for Breakfast, Lunch, and Dinner.</li>
           <li>Developed secure user QR scanning verification mechanisms utilizing UUID-based identifiers and Base64 meal payloads.</li>
-          <li>Programmed background cron services for daily PDF QR code generation, automated email distribution, and discrepancy auditing.</li>
-          <li>Integrated cross-platform push notifications dynamically driven by Firebase Cloud Messaging (FCM) configurations.</li>
+          <li>Programmed background cron services for daily PDF QR code generation and automated email distribution.</li>
         </ul>
         <div class="project-tech"><strong>Tech Stack:</strong> Angular 16, NestJS, TypeORM, MySQL, Keycloak SSO, Firebase FCM, jsPDF, ExcelJS</div>
 
@@ -368,54 +365,49 @@
         <ul class="bullets">
           <li>Designed a full-stack Event Management platform for expo bookings, visitor tracking, and agenda schedules.</li>
           <li>Developed a cross-platform hybrid mobile app built with Ionic & Capacitor supporting iOS, Android, and web platforms.</li>
-          <li>Created administrative dashboards incorporating real-time database syncing, agenda builders, and instant push notifications.</li>
         </ul>
         <div class="project-tech"><strong>Tech Stack:</strong> Angular, Ionic, Capacitor, NestJS, MySQL, TypeORM, Firebase FCM</div>
 
         <div class="project-name">Project: Doctor Payout Automation</div>
         <ul class="bullets">
-          <li>Automated monthly payout processing across six business units, reducing manual reconciliation effort and calculation errors.</li>
           <li>Engineered a modular fee calculation engine supporting custom doctor payout templates, marginal slab rates, and template configuration.</li>
           <li>Implemented secure file upload workflows with robust validation checks, error reporting, and collection tracking.</li>
         </ul>
         <div class="project-tech"><strong>Tech Stack:</strong> React, NestJS, TypeORM, MySQL, Zustand, Radix UI, Azure MSAL</div>
       </div>
+      <div class="section-title">Key Achievements</div>
+      <ul class="bullets" style="margin-bottom: 0.8rem;">
+        <li><strong>Enterprise Scale:</strong> Developed and maintained 5 enterprise applications across web and mobile platforms.</li>
+        <li><strong>Workflow Automation:</strong> Automated multi-level document approval workflows, reducing manual processing time by 45%.</li>
+        <li><strong>Performance Optimization:</strong> Optimized SQL queries and database indexes, improving report-generation performance by 60%.</li>
+      </ul>
 
-      <div class="columns-grid">
-        <div>
-          <div class="col-title">Education</div>
-          <div class="edu-item">
-            <div class="edu-header">
-              <span>B.E (Computer Science Engineering)</span>
-              <span>2018 – 2022</span>
-            </div>
-            <div class="edu-school">University College of Engineering, Ariyalur</div>
-            <div class="edu-score">GPA: 7.8 / 10</div>
-          </div>
-
-          <div class="col-title" style="margin-top: 0.8rem;">Languages</div>
-          <div class="lang-item-text"><span>English</span> – Professional Proficiency</div>
-          <div class="lang-item-text"><span>Tamil</span> – Native Language</div>
-          <div class="lang-item-text"><span>Hindi</span> – Intermediate</div>
-
-          <div class="col-title" style="margin-top: 0.8rem;">Key Achievements</div>
-          <ul class="bullets">
-            <li>Developed and maintained 5 enterprise applications across web and mobile platforms.</li>
-            <li>Automated multi-level approval workflows, reducing manual processing time by 45%.</li>
-            <li>Optimized SQL queries and improved report-generation performance by 60%.</li>
-          </ul>
+      <div class="section-title">Education</div>
+      <div class="edu-item" style="margin-bottom: 0.8rem;">
+        <div class="edu-header">
+          <span>B.E (Computer Science Engineering)</span>
+          <span>2018 – 2022</span>
         </div>
-
-        <div>
-          <div class="col-title">Certifications</div>
-          <div class="cert-item-text"><span>Java Programming</span> – Course Completion Certificate</div>
-          <div class="cert-item-text"><span>Concepts in Machine Learning</span> – Workshop Certification</div>
-          <div class="cert-item-text"><span>Digital Image Processing</span> – Workshop Certification</div>
-          <div class="cert-item-text"><span>Advanced Excel</span> – Workshop Certification</div>
-          <div class="cert-item-text"><span>Oracle SQL</span> – Course Certification</div>
-          <div class="cert-item-text"><span>Hindi Language (4 Levels)</span> – Dakshin Bharat Hindi Prachar Sabha</div>
-        </div>
+        <div class="edu-school">University College of Engineering, Ariyalur</div>
+        <div class="edu-score">GPA: 7.8 / 10</div>
       </div>
+
+      <div class="section-title">Certifications</div>
+      <ul class="bullets" style="margin-bottom: 0.8rem;">
+        <li><strong>Java Programming</strong> – Course Completion Certificate</li>
+        <li><strong>Concepts in Machine Learning</strong> – Workshop Certification</li>
+        <li><strong>Digital Image Processing</strong> – Workshop Certification</li>
+        <li><strong>Advanced Excel</strong> – Workshop Certification</li>
+        <li><strong>Oracle SQL</strong> – Course Certification</li>
+        <li><strong>Hindi Language (4 Levels)</strong> – Dakshin Bharat Hindi Prachar Sabha</li>
+      </ul>
+
+      <div class="section-title">Languages</div>
+      <ul class="bullets">
+        <li><strong>English</strong> – Professional Proficiency</li>
+        <li><strong>Tamil</strong> – Native Language</li>
+        <li><strong>Hindi</strong> – Intermediate</li>
+      </ul>
     </div>
 
   </div>
