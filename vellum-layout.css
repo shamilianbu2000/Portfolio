@@ -1,0 +1,325 @@
+/* ==========================================================================
+   VELLUM-STYLE LAYOUT LAYER
+   Layout / flow only. Colours, fonts, stars and content come from styles.css.
+   Pattern: floating pill nav -> centred hero -> logo strip -> centred
+   section headings -> rounded bento cards -> big centred CTA -> card footer.
+   ========================================================================== */
+
+:root {
+  --v-max: 1200px;
+  --v-radius: 24px;
+  --v-radius-sm: 16px;
+  --v-gutter: clamp(1.25rem, 4vw, 2.5rem);
+  --v-card: rgba(17, 22, 51, 0.55);
+  --v-card-hover: rgba(24, 30, 66, 0.75);
+}
+
+/* ---------- FLOATING PILL NAV ---------- */
+nav {
+  top: 16px;
+  left: 50%;
+  right: auto;
+  transform: translateX(-50%);
+  width: min(calc(100% - 2rem), 1080px);
+  height: 60px;
+  padding: 0 .75rem 0 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: rgba(8, 11, 26, 0.55);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+nav.scrolled {
+  background: rgba(8, 11, 26, 0.88);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, .35), 0 0 0 1px rgba(139, 92, 246, .12);
+}
+.nav-logo { font-size: 1.05rem; }
+.nav-links { gap: .25rem; }
+.nav-links a {
+  padding: .5rem .9rem;
+  border-radius: 999px;
+  transition: background .3s, color .3s;
+}
+.nav-links a::after { display: none; }
+.nav-links a:hover,
+.nav-links a.active { background: rgba(139, 92, 246, .14); }
+.nav-cta { border-radius: 999px; }
+
+/* ---------- CENTRED HERO ---------- */
+.hero {
+  justify-content: center;
+  text-align: center;
+  padding-top: 120px;
+  padding-bottom: 6rem;
+}
+.hero-content {
+  grid-template-columns: 1fr;
+  justify-items: center;
+  gap: 2.5rem;
+  max-width: 980px;
+  margin: 0 auto;
+}
+.hero-label {
+  display: inline-flex;
+  justify-content: center;
+  padding: .5rem 1.1rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--v-card);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+.hero-label::before { display: none; }
+.hero h1 { font-size: clamp(3.2rem, 11vw, 8.5rem); }
+.hero-right { text-align: center; }
+.hero-right p {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 680px;
+}
+.hero-right .scroll-hint { justify-content: center; }
+
+/* ---------- LOGO STRIP (marquee) ---------- */
+.marquee {
+  width: min(calc(100% - 2 * var(--v-gutter)), var(--v-max));
+  margin: 0 auto;
+  border: 1px solid var(--border);
+  border-radius: var(--v-radius);
+  background: var(--v-card);
+  overflow: hidden;
+}
+
+/* ---------- PHILOSOPHY + CURRENTLY: centred statement blocks ---------- */
+.philosophy {
+  max-width: 980px;
+  margin: 5rem auto;
+  padding: clamp(2.5rem, 6vw, 4.5rem) var(--v-gutter);
+  text-align: center;
+  border: 1px solid var(--border);
+  border-radius: var(--v-radius);
+  background: var(--v-card);
+}
+.philosophy-text { margin-left: auto; margin-right: auto; }
+
+.currently {
+  max-width: var(--v-max);
+  margin: 0 auto 4rem;
+  padding: 2rem var(--v-gutter);
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.25rem;
+  border: 1px solid var(--border);
+  border-radius: var(--v-radius);
+  background: var(--v-card);
+}
+.currently-items { justify-content: center; }
+
+/* ---------- LATEST WRITING: single rounded card ---------- */
+.latest {
+  max-width: var(--v-max);
+  margin: 0 auto;
+  padding: 0 var(--v-gutter);
+  border-bottom: 0;
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+.latest-inner {
+  grid-template-columns: 1fr;
+  justify-items: center;
+  text-align: center;
+  gap: 1.25rem;
+}
+.latest-card {
+  width: 100%;
+  padding: clamp(1.75rem, 4vw, 3rem);
+  border: 1px solid var(--border);
+  border-radius: var(--v-radius);
+  background: var(--v-card);
+  transition: border-color .4s, background .4s, transform .5s var(--spring);
+}
+.latest-card:hover {
+  border-color: var(--primary);
+  background: var(--v-card-hover);
+  transform: translateY(-4px);
+}
+.latest-meta { justify-content: center; }
+.latest-excerpt { max-width: 720px; margin-left: auto; margin-right: auto; text-align: center; }
+
+/* ---------- SECTIONS: centred eyebrow + heading ---------- */
+.sec,
+.projects-wrap {
+  max-width: var(--v-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--v-gutter);
+  padding-right: var(--v-gutter);
+}
+.sec-white {
+  background: transparent;
+  border: 0;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+.sec-label {
+  justify-content: center;
+  width: fit-content;
+  margin: 0 auto 1.25rem;
+  padding: .45rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--v-card);
+}
+.sec-label::before { width: 6px; height: 6px; border-radius: 50%; }
+.sec-title {
+  text-align: center;
+  text-transform: none;
+  font-size: clamp(2.2rem, 5.5vw, 4.25rem);
+  max-width: 900px;
+  margin: 0 auto 3.5rem;
+}
+.projects-header { padding: 0; text-align: center; }
+
+/* ---------- ABOUT: bento (text card + 2x2 stat tiles) ---------- */
+.about-grid {
+  grid-template-columns: 1.3fr 1fr;
+  gap: 1.5rem;
+  align-items: stretch;
+}
+.about-text {
+  padding: clamp(1.75rem, 3.5vw, 2.75rem);
+  border: 1px solid var(--border);
+  border-radius: var(--v-radius);
+  background: var(--v-card);
+}
+.about-text p:last-child { margin-bottom: 0; }
+.stats-row { gap: 1.5rem; }
+.stat {
+  border-radius: var(--v-radius);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* ---------- TESTIMONIALS: bento ---------- */
+.testimonials-grid { gap: 1.5rem; }
+.testimonial-card {
+  border-radius: var(--v-radius);
+  background: var(--v-card);
+}
+.testimonial-author { border: 0; background: transparent; padding: 0; margin-top: 1.5rem; }
+
+/* ---------- PROJECTS: bento grid (replaces horizontal marquee) ---------- */
+.projects-track.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  padding: 1rem 0 4rem;
+  transform: none !important;
+}
+.projects-grid .project-card {
+  width: auto;
+  border-radius: var(--v-radius);
+  background: var(--v-card);
+  padding: clamp(1.75rem, 3vw, 2.5rem);
+  display: flex;
+  flex-direction: column;
+}
+.projects-grid .project-card:hover { background: var(--v-card-hover); }
+.projects-grid .project-tech { margin-top: auto; padding-top: 1.25rem; }
+.projects-grid .project-card:nth-child(3n+1) { grid-column: 1 / -1; }
+.projects-grid .project-card:last-child:nth-child(3n+2) { grid-column: 1 / -1; }
+.projects-grid .project-card:nth-child(3n+1) .project-bullets,
+.projects-grid .project-card:last-child:nth-child(3n+2) .project-bullets {
+  columns: 2;
+  column-gap: 2.5rem;
+}
+.projects-grid .project-card:nth-child(3n+1) .project-bullets li,
+.projects-grid .project-card:last-child:nth-child(3n+2) .project-bullets li { break-inside: avoid; }
+
+/* ---------- EXPERIENCE ---------- */
+.timeline {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: clamp(1.75rem, 3.5vw, 2.75rem);
+  padding-left: clamp(3rem, 6vw, 4.5rem);
+  border: 1px solid var(--border);
+  border-radius: var(--v-radius);
+  background: var(--v-card);
+}
+
+/* ---------- SKILLS: bento tiles ---------- */
+.skills-grid {
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  overflow: visible;
+  contain: none;
+}
+.skill-cell {
+  border: 1px solid var(--border);
+  border-radius: var(--v-radius-sm);
+  background: var(--v-card);
+}
+.skill-cell:hover { background: var(--v-card-hover); border-color: var(--primary); }
+
+/* ---------- EDUCATION ---------- */
+.edu-grid { gap: 1.5rem; }
+.edu-card {
+  border-radius: var(--v-radius);
+  background: var(--v-card);
+}
+
+/* ---------- CONTACT: big centred CTA card ---------- */
+.contact {
+  max-width: 1000px;
+  margin: 2rem auto 6rem;
+  padding: clamp(2.5rem, 6vw, 5rem) var(--v-gutter);
+  border: 1px solid var(--border);
+  border-radius: calc(var(--v-radius) + 8px);
+  background: var(--v-card);
+  overflow: hidden;
+}
+.contact .sec-label { margin-bottom: 1.5rem; }
+.contact-form-container { border-radius: var(--v-radius); }
+.contact-chip { border-radius: 999px; }
+.btn-big { border-radius: 999px; }
+.form-group input,
+.form-group textarea { border-radius: 12px; }
+
+/* ---------- FOOTER: contained card ---------- */
+footer[role="contentinfo"] {
+  width: min(calc(100% - 2 * var(--v-gutter)), var(--v-max));
+  margin: 0 auto 2rem;
+  border: 1px solid var(--border);
+  border-radius: var(--v-radius);
+  background: var(--v-card);
+  overflow: hidden;
+}
+.footer-inner { flex-direction: column; align-items: center; text-align: center; gap: 1.5rem; }
+.footer-links { justify-content: center; }
+
+/* ---------- DIVIDERS: lighter touch ---------- */
+.constellation-divider { margin: 1rem 0; }
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 1024px) {
+  .skills-grid { grid-template-columns: repeat(2, 1fr); }
+  .about-grid { grid-template-columns: 1fr; }
+  .projects-track.projects-grid { grid-template-columns: 1fr; }
+  .projects-grid .project-card:nth-child(3n+1) .project-bullets { columns: 1; }
+}
+@media (max-width: 768px) {
+  nav { width: calc(100% - 1.5rem); top: 10px; height: 54px; padding: 0 .5rem 0 1.1rem; }
+  .menu-btn { margin-left: auto; }
+  .hero { padding-top: 100px; }
+  .hero-right { text-align: center; }
+  .hero-right p { margin-left: auto; }
+  .hero-right .scroll-hint { justify-content: center; }
+  .skills-grid { grid-template-columns: 1fr; }
+  .currently { align-items: center; }
+  .projects-grid .project-card { padding: 1.5rem; }
+}
