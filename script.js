@@ -305,6 +305,8 @@ if (hasGSAP) {
   function setupProjectsAutoScroll() {
     const track = document.getElementById('projectsTrack');
     if (!track) return;
+    // Bento-grid layout: no horizontal marquee needed
+    if (track.classList.contains('projects-grid')) return;
 
     if (typeof gsap === 'undefined') {
       track.style.overflowX = 'auto';
